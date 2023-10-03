@@ -128,9 +128,19 @@ public class Loja {
 								System.out.printf(
 										"O produto %s foi cadastrado com sucesso! Código = %d, Estoque = %d%n",
 										nomeProduto, codigoProduto, quantidadeProduto);
+
+								double valordaCompra = novoProduto.getValorCompra() * quantidadeProduto;
+								if (getSaldo() >= valordaCompra) {
+									double novoSaldo = getSaldo() - valordaCompra;
+									setSaldo(novoSaldo);
+									String nome = novoProduto.getNomeProduto();
+									relatorioCompra
+											.add(new Relatorio("compra", nome, quantidadeProduto, valordaCompra));
+								}
 								System.out.println(TRAVESSAO);
 							} else {
-								System.out.println("Não é possível cadastrar produto com estoque negativo.");
+								System.out.println(
+										"Não é possível cadastrar produto com estoque negativo ou saldo insulficiente para aumentar estoque. ");
 							}
 
 						} else if (simOUnao.equals("não")) {
@@ -371,8 +381,8 @@ public class Loja {
 
 				} else if (entrada[0].equals("livro")) {
 					Livro livro = new Livro(entrada[1], codigo, Integer.parseInt(entrada[2]), "livro",
-							Double.parseDouble(entrada[5]), Double.parseDouble(entrada[6]), entrada[4],
-							Integer.parseInt(entrada[3]));
+							Double.parseDouble(entrada[5]), Double.parseDouble(entrada[6]), entrada[3],
+							Integer.parseInt(entrada[4]));
 					produtos.add(livro);
 
 				}
@@ -419,25 +429,26 @@ public class Loja {
 			System.out.println("Nenhum produto comprado.");
 		}
 	}
-	 public static int lerNumeroNaoNegativo(Scanner sc) {
-	        int numero;
-	        do {
-	            numero = Integer.parseInt(sc.nextLine());
-	            if (numero < 0) {
-	                System.out.println("O número não pode ser negativo. Digite novamente:");
-	            }
-	        } while (numero < 0);
-	        return numero;
-	    }
 
-	    public static double lerNumeroNaoNegativoDouble(Scanner sc) {
-	        double numero;
-	        do {
-	            numero = Double.parseDouble(sc.nextLine());
-	            if (numero < 0) {
-	                System.out.println("O número não pode ser negativo. Digite novamente:");
-	            }
-	        } while (numero < 0);
-	        return numero;
-	    }
+	public static int lerNumeroNaoNegativo(Scanner sc) {
+		int numero;
+		do {
+			numero = Integer.parseInt(sc.nextLine());
+			if (numero < 0) {
+				System.out.println("O número não pode ser negativo. Digite novamente:");
+			}
+		} while (numero < 0);
+		return numero;
+	}
+
+	public static double lerNumeroNaoNegativoDouble(Scanner sc) {
+		double numero;
+		do {
+			numero = Double.parseDouble(sc.nextLine());
+			if (numero < 0) {
+				System.out.println("O número não pode ser negativo. Digite novamente:");
+			}
+		} while (numero < 0);
+		return numero;
+	}
 }
