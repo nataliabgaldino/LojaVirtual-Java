@@ -31,5 +31,8 @@ public class Caderno extends Produto {
 	public void setGramaturadoPapel(int gramaturadoPapel) {
 		this.gramaturadoPapel = gramaturadoPapel;
 	}  
+	public String createBackup() {
+		return "caderno," + this.nomeProduto + "," + this.estoque + "," + this.gramaturadoPapel + "," + this.numerodePaginas + "," + this.valorCompra + "," + this.valorVenda;
+}
 }
 	

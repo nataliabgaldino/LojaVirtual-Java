@@ -1,32 +1,31 @@
 package lojaVirtual;
 
 public class Produto {
-	   
-	    
-		protected String nomeProduto;
-		protected int codigoProduto;
-		protected int estoque;
-		protected String categoria;
-		protected double valorCompra;
-		protected double valorVenda;
-	        
-    public Produto(String nomeProduto, int codigoProduto, int estoque, String categoria, double valorCompra,
-				double valorVenda) {
-			this.nomeProduto = nomeProduto;
-			this.codigoProduto = codigoProduto;
-			this.estoque= estoque;
-			this.categoria =categoria;
-			this.setValorCompra(valorCompra);
-			this.valorVenda = valorVenda;			
-		}	    
-    public String getNomeProduto() {
+	protected String nomeProduto;
+	protected int codigoProduto;
+	protected int estoque;
+	protected String categoria;
+	protected double valorCompra;
+	protected double valorVenda;
+
+	public Produto(String nomeProduto, int codigoProduto, int estoque, String categoria, double valorCompra,
+			double valorVenda) {
+		this.nomeProduto = nomeProduto;
+		this.codigoProduto = codigoProduto;
+		this.estoque = estoque;
+		this.categoria = categoria;
+		this.setValorCompra(valorCompra);
+		this.valorVenda = valorVenda;
+	}
+
+	public String getNomeProduto() {
 		return nomeProduto;
 	}
-    
+
 	public void setNomeProduto(String nomeProduto) {
 		this.nomeProduto = nomeProduto;
 	}
-	
+
 	public int getCodigoProduto() {
 		return codigoProduto;
 	}
@@ -68,33 +67,32 @@ public class Produto {
 	}
 
 	@Override
-    public String toString() {
-        return nomeProduto + " |cód.: " + codigoProduto + " | estoque: " + estoque + " | custo de compra: " + valorCompra
-                + " | valor de venda: " + valorVenda + "|";
-    }  
-	
+	public String toString() {
+		return nomeProduto + " |cód.: " + codigoProduto + " | estoque: " + estoque + " | custo de compra: "
+				+ valorCompra + " | valor de venda: " + valorVenda + "|";
+	}
+
 	public String listarProdutos() {
-		return nomeProduto + " |cód.: " + codigoProduto + " | estoque: " + estoque + " | custo de compra: " + valorCompra
-                + " | valor de venda: " + valorVenda + "|";
+		return nomeProduto + " |cód.: " + codigoProduto + " | estoque: " + estoque + " | custo de compra: "
+				+ valorCompra + " | valor de venda: " + valorVenda + "|";
 
 	}
-	
-	
-     public String reduzirEstoque(int quantidade) {
-    	if(quantidade > this.estoque) {
-    		return "Estoque insulficiente.";
-    	} else {
-            this.estoque = estoque - quantidade;
-    		
-    		return "Estoque do produto atualizado com sucesso!";
-    	}
-    }
-     public void alterarEstoque(int quantidade) {
-         this.estoque = quantidade+estoque;
-     }
-     
-     public String relatorio(String nome,int quantidade,double valorTotal) {
-    	 return "-"+ nome + "|" + quantidade + " unidade(s)" + "|R$" + valorTotal + ";";
-    	 
-     }
-}	
+
+	public String reduzirEstoque(int quantidade) {
+		if (quantidade > this.estoque) {
+			return "Estoque insulficiente.";
+		} else {
+			this.estoque = estoque - quantidade;
+
+			return "Estoque do produto atualizado com sucesso!";
+		}
+	}
+
+	public void alterarEstoque(int quantidade) {
+		this.estoque = quantidade + estoque;
+	}
+
+	public String createBackup() {
+		return "caderno," + this.nomeProduto + "," + this.estoque + "," + this.valorCompra + "," + this.valorVenda;
+	}
+}

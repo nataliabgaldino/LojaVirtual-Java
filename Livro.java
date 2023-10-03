@@ -18,6 +18,11 @@ public class Livro extends Produto {
 	public String toString() {
 	    return super.toString()+ numeroPaginas + " paginas|" + "autor: " + nomeAutor + "|";
 	}
+	
+	public String createBackup() {
+		return "livro," + this.nomeProduto + "," + this.estoque + "," + this.nomeAutor + "," + this.numeroPaginas + "," + this.valorCompra + "," + this.valorVenda;
+	}
+
 }
 
 	

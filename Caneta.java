@@ -33,4 +33,8 @@ public class Caneta extends Produto {
 	public void setCor(String cor) {
 		this.cor = cor;
 	}
+	
+	public String createBackup() {
+		return "caneta," + this.nomeProduto + "," + this.estoque + "," + this.cor + "," + this.tamanhodaPonta + "," + this.valorCompra + "," + this.valorVenda;
+}
 }
