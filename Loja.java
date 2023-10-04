@@ -326,6 +326,8 @@ public class Loja {
 		try {
 			PrintWriter writer = new PrintWriter("historico.txt");
 
+			writer.write("saldo," + getSaldo() + "\n");
+
 			for (Relatorio compra : relatatorioCompra) {
 				writer.write(compra.createBackup() + "\n");
 			}
@@ -359,13 +361,11 @@ public class Loja {
 					Relatorio relatorio = new Relatorio(entrada[0], entrada[1], Integer.parseInt(entrada[2]),
 							Double.parseDouble(entrada[3]));
 					relatorioCompra.add(relatorio);
-					setSaldo(getSaldo() - Double.parseDouble(entrada[3]));
 
 				} else if (entrada[0].equals("venda")) {
 					Relatorio relatorio = new Relatorio(entrada[0], entrada[1], Integer.parseInt(entrada[2]),
 							Double.parseDouble(entrada[3]));
 					relatorioVenda.add(relatorio);
-					setSaldo(getSaldo() + Double.parseDouble(entrada[3]));
 
 				} else if (entrada[0].equals("caderno")) {
 					Caderno caderno = new Caderno(entrada[1], codigo, Integer.parseInt(entrada[2]), "caderno",
@@ -385,7 +385,10 @@ public class Loja {
 							Integer.parseInt(entrada[4]));
 					produtos.add(livro);
 
+				} else if (entrada[0].equals("saldo")) {
+					setSaldo(Double.parseDouble(entrada[1]));
 				}
+
 				codigo++;
 			}
 
