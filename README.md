@@ -1,2 +1,2 @@
-Sistema de uma loja virtual desenvolvido em Java que permite ao usuário controlar os produtos, Listando-os, cadastrando novos produtos, adicionando-os, removendo um produto existente, atualizando a quantidade a partir dos produtos vendidos, gerando um relatório sobre a loja e saindo do sistema.
-Este projeto usou os conceitos de programação orientada a objetos e persistência de dados. 
+Sistema de uma loja virtual desenvolvido em Java que permite ao usuário controlar os produtos, listando os existentes, cadastrando novos produtos, adicionando produtos comprados, removendo um produto do estoque, atualizando a quantidade a partir dos produtos vendidos, gerando um relatório sobre a loja e saindo do sistema.
+Este projeto usou os conceitos de programação orientada a objetos (POO) e persistência de dados. 
